@@ -45,9 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\HandleCollision.cs" />
-     <Compile Include="Assets\KnightBehaviour.cs" />
-     <Compile Include="Assets\controllerScript.cs" />
+     <Compile Include="Assets\Scripts\DialogueScript.cs" />
+     <Compile Include="Assets\Scripts\GameTimer.cs" />
+     <Compile Include="Assets\Scripts\HandleCollision.cs" />
+     <Compile Include="Assets\Scripts\KnightBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Score.cs" />
+     <Compile Include="Assets\Scripts\SetButtonColor.cs" />
+     <Compile Include="Assets\Scripts\TestDialogue.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
