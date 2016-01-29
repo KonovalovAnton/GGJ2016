@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum QTEResult {
+	Success,
+	Failure,
+	Next
+}
+
 public class QTEController : Singleton<QTEController> {
 	const string _newObjectName = "_QTEController";
 
@@ -33,14 +39,14 @@ public class QTEController : Singleton<QTEController> {
 		}
 
 		if (index != sequence[currentIndex]) {
-			GameController.instance.QTEResult(false);
+			ControllerScript.instance.OnQTEResult(QTEResult.Failure);
 		}
 
 		currentIndex++;
 		if (currentIndex == sequence.Length) {
-			GameController.instance.QTEResult(true);
+			ControllerScript.instance.OnQTEResult(QTEResult.Success);
 		} else if(currentIndex<sequence.Length){
-			GameController.instance.QTEUpdate();
+			ControllerScript.instance.OnQTEResult(QTEResult.Next);
 		}
 	}
 }

@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerScript : MonoBehaviour {
+public class ControllerScript : Singleton<ControllerScript> {
+	const string _newObjectName = "_ControllerScript";
 
 	bool knightIsReady = false;
 	public DialogueScript UI;
 	int[] QTE;
+
+	protected override string newObjectName {
+		get { return _newObjectName; }
+	}
+
+	protected override bool dontDestroyOnLoad {
+		get { return false; }
+	}
 
 	void SetKnightReady() {
 		knightIsReady = true;
