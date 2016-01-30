@@ -3,6 +3,9 @@ using System.Collections;
 
 public class KnightBehaviour : MonoBehaviour {
 
+	public GameObject deadHead;
+	public ParticleSystem blood;
+
 
 	public enum State
 	{
@@ -10,6 +13,7 @@ public class KnightBehaviour : MonoBehaviour {
 		Running,
 		Knees,
 		Throne,
+		Disable,
 		Exit
 	}
 
@@ -23,11 +27,18 @@ public class KnightBehaviour : MonoBehaviour {
 	void Start () {
 		anim = GetComponentInChildren<Animator>();
 		st = State.Spawned;
+		head = gameObject.transform.Find("skelet/head").GetComponent<SpriteRenderer>();
 
+	}
+
+	void OnAwake() {
+		//blood.Stop();
+		blood.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		print("BLood is playing: " + blood.isPlaying);
 		switch (st) {
 		case State.Spawned:
 			spawn ();
@@ -40,6 +51,9 @@ public class KnightBehaviour : MonoBehaviour {
 			break;
 		case State.Throne:
 			throne ();
+			break;
+		case State.Disable:
+			gameObject.SetActive(false);
 			break;
 		case State.Exit:
 			exit ();
@@ -83,10 +97,27 @@ public class KnightBehaviour : MonoBehaviour {
 		transform.Translate (delta);
 		if (exitPoint.collisionTrigered) {
 			st = State.Spawned;
+			if(noHead) {
+				//blood.Stop();
+				blood.gameObject.SetActive(false);
+				xorHead();
+			}
 		}
 	}
 
-	public void setKneesOff() {
+	public void setKneesOff(bool cutHead) {
 		st = State.Throne;
+		if(cutHead) {
+			blood.gameObject.SetActive(true);
+			Instantiate(deadHead, head.transform.position, Quaternion.identity);
+			xorHead();
+		}
+	}
+
+	public bool noHead = false;
+	SpriteRenderer head;
+	public void xorHead() {
+		head.enabled = noHead;
+		noHead ^= true;
 	}
 }

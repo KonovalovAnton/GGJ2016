@@ -38,7 +38,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 		{
 			case QTEResult.Failure: {
 					UI.SelfDisable();
-					knight.setKneesOff ();
+					knight.setKneesOff (true);
 					break;
 				}
 			case QTEResult.Next: {
@@ -49,7 +49,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 					UI.SelfDisable();
 					score++;
 					UI.setScore (score);
-					knight.setKneesOff ();
+					knight.setKneesOff (false);
 					break;
 				}
 			}
