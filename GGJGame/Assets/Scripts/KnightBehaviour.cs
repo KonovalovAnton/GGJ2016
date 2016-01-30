@@ -17,6 +17,7 @@ public class KnightBehaviour : MonoBehaviour {
 	public HandleCollision kneePoint,thronePoint,exitPoint;
 	public Transform spawnPoint;
 	public Animator anim;
+	public ControllerScript cs;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +61,7 @@ public class KnightBehaviour : MonoBehaviour {
 		transform.Translate (delta);
 		if (kneePoint.collisionTrigered) {
 			st = State.Knees;
+			cs.SetKnightReady ();
 		}
 	}
 
@@ -82,5 +84,9 @@ public class KnightBehaviour : MonoBehaviour {
 		if (exitPoint.collisionTrigered) {
 			st = State.Spawned;
 		}
+	}
+
+	public void setKneesOff() {
+		st = State.Throne;
 	}
 }

@@ -8,10 +8,10 @@ public class Score : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		scoreText = GetComponent<Text>();
+		scoreText = GetComponentInChildren<Text>();
 	}
 
-	void SetScore (int score) {
-		scoreText.text = score.ToString();
+	public void SetScore (int score) {
+		scoreText.text = "Score: " + score.ToString();
 	}
 }

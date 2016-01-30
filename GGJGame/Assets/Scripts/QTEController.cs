@@ -34,19 +34,26 @@ public class QTEController : Singleton<QTEController> {
 	}
 
 	public void TakeInput(int index) {
+		if (sequence == null) {
+			return;
+		}
+
 		if (currentIndex == sequence.Length) {
 			return;
 		}
 
 		if (index != sequence[currentIndex]) {
-//			ControllerScript.instance.OnQTEResult(QTEResult.Failure);
+			ControllerScript.instance.OnQTEResult(QTEResult.Failure);
+			sequence = null;
+			return;
 		}
 
 		currentIndex++;
 		if (currentIndex == sequence.Length) {
-//			ControllerScript.instance.OnQTEResult(QTEResult.Success);
+			ControllerScript.instance.OnQTEResult(QTEResult.Success);
+			sequence = null;
 		} else if(currentIndex<sequence.Length){
-//			ControllerScript.instance.OnQTEResult(QTEResult.Next);
+			ControllerScript.instance.OnQTEResult(QTEResult.Next);
 		}
 	}
 }

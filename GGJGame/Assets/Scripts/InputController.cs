@@ -39,9 +39,10 @@ public class InputController : Singleton<InputController> {
 			}*/
 
 			if (Input.GetKeyDown(joystickCodes[i]) || Input.GetKeyDown(keyboardCodes[i])) {
+				Debug.Log (i + "  - Input Controller");
 					drums.PlayDrum(i);
 					QTEController.instance.TakeInput(i);
-					Debug.Log(i);
+					
 			}
 		}
 	}

@@ -6,6 +6,8 @@ public class ControllerScript : Singleton<ControllerScript> {
 
 	bool knightIsReady = false;
 	public DialogueScript UI;
+	public KnightBehaviour knight;
+	int score = 0;
 	int[] QTE;
 
 	protected override string newObjectName {
@@ -16,9 +18,10 @@ public class ControllerScript : Singleton<ControllerScript> {
 		get { return false; }
 	}
 
-	void SetKnightReady() {
+	public void SetKnightReady() {
 		knightIsReady = true;
-		genQTE (6);
+		genQTE (2);
+		UI.SetSequence (QTE);
 		QTEController.instance.BeginValidation(QTE);
 	}
 
@@ -30,25 +33,30 @@ public class ControllerScript : Singleton<ControllerScript> {
 	}
 
 	public void OnQTEResult(QTEResult res) {
+		Debug.Log (res);
 		switch(res)
 		{
-		case QTEResult.Failure: {
-				UI.SelfDisable();
-				break;
+			case QTEResult.Failure: {
+					UI.SelfDisable();
+					knight.setKneesOff ();
+					break;
+				}
+			case QTEResult.Next: {
+					UI.SetButtons();
+					break;
+				}
+			case QTEResult.Success: {
+					UI.SelfDisable();
+					score++;
+					UI.setScore (score);
+					knight.setKneesOff ();
+					break;
+				}
 			}
-		case QTEResult.Next: {
-				UI.SetButtons();
-				break;
-			}
-		case QTEResult.Success: {
-				UI.SelfDisable();
-				break;
-			}
-		}
 	}
 
 	void Start() {
-		SetKnightReady();
+		UI.setScore (score);
 	}
 
 	// Update is called once per frame
