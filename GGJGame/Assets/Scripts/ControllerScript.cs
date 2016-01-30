@@ -18,7 +18,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 
 	void SetKnightReady() {
 		knightIsReady = true;
-		genQTE (3);
+		genQTE (6);
 		QTEController.instance.BeginValidation(QTE);
 	}
 
@@ -29,9 +29,26 @@ public class ControllerScript : Singleton<ControllerScript> {
 		}
 	}
 
-	// Use this for initialization
-	void Start () {
+	public void OnQTEResult(QTEResult res) {
+		switch(res)
+		{
+		case QTEResult.Failure: {
+				UI.SelfDisable();
+				break;
+			}
+		case QTEResult.Next: {
+				UI.SetButtons();
+				break;
+			}
+		case QTEResult.Success: {
+				UI.SelfDisable();
+				break;
+			}
+		}
+	}
 
+	void Start() {
+		SetKnightReady();
 	}
 
 	// Update is called once per frame
