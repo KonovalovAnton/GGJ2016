@@ -39,14 +39,14 @@ public class QTEController : Singleton<QTEController> {
 		}
 
 		if (index != sequence[currentIndex]) {
-			ControllerScript.instance.OnQTEResult(QTEResult.Failure);
+//			ControllerScript.instance.OnQTEResult(QTEResult.Failure);
 		}
 
 		currentIndex++;
 		if (currentIndex == sequence.Length) {
-			ControllerScript.instance.OnQTEResult(QTEResult.Success);
+//			ControllerScript.instance.OnQTEResult(QTEResult.Success);
 		} else if(currentIndex<sequence.Length){
-			ControllerScript.instance.OnQTEResult(QTEResult.Next);
+//			ControllerScript.instance.OnQTEResult(QTEResult.Next);
 		}
 	}
 }

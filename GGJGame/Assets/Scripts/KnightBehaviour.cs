@@ -16,10 +16,13 @@ public class KnightBehaviour : MonoBehaviour {
 	public State st;
 	public HandleCollision kneePoint,thronePoint,exitPoint;
 	public Transform spawnPoint;
+	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponentInChildren<Animator>();
 		st = State.Spawned;
+
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,7 @@ public class KnightBehaviour : MonoBehaviour {
 			run ();
 			break;
 		case State.Knees:
+			knees ();
 			break;
 		case State.Throne:
 			throne ();
@@ -52,13 +56,21 @@ public class KnightBehaviour : MonoBehaviour {
 	Vector3 deltaThrone = new Vector3(0.1f,-0.1f,0);
 
 	void run() {
+		anim.SetTrigger ("RUN");
 		transform.Translate (delta);
 		if (kneePoint.collisionTrigered) {
 			st = State.Knees;
 		}
 	}
 
+	void knees() {
+		anim.ResetTrigger ("RUN");
+		anim.SetTrigger ("KNEES");
+	}
+
 	void throne() {
+		anim.ResetTrigger ("KNEES");
+		anim.SetTrigger ("RUN");
 		transform.Translate (deltaThrone);
 		if (thronePoint.collisionTrigered) {
 			st = State.Exit;
