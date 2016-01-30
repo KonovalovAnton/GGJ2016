@@ -7,11 +7,15 @@ public class TestDialogue : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		test.SetButtons(new int[] {1, 1, 2});
+		test.SetSequence(new int[] {1, 2, 0, 0, 1, 2});
+		test.SetButtons();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyDown("space")) {
+			print("test");
+			test.SetButtons();
+		}
 	}
 }
