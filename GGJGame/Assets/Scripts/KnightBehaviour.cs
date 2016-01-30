@@ -26,6 +26,7 @@ public class KnightBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponentInChildren<Animator>();
+		king = GameObject.Find ("King").GetComponentInChildren<Animator> ();
 		st = State.Spawned;
 		head = gameObject.transform.Find("skelet/head").GetComponent<SpriteRenderer>();
 
@@ -79,9 +80,13 @@ public class KnightBehaviour : MonoBehaviour {
 		}
 	}
 
+
+	Animator king;
 	void knees() {
 		anim.ResetTrigger ("RUN");
 		anim.SetTrigger ("KNEES");
+		king.ResetTrigger ("STAY");
+		king.SetTrigger ("KNIGHTING");
 	}
 
 	void throne() {
@@ -107,6 +112,8 @@ public class KnightBehaviour : MonoBehaviour {
 
 	public void setKneesOff(bool cutHead) {
 		st = State.Throne;
+		king.ResetTrigger ("KNIGHTING");
+		king.SetTrigger ("STAY");
 		if(cutHead) {
 			blood.gameObject.SetActive(true);
 			Instantiate(deadHead, head.transform.position, Quaternion.identity);
