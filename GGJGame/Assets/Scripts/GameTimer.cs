@@ -18,6 +18,7 @@ public class GameTimer : MonoBehaviour {
 
 	void Update() {
 		if ((int)timeLeft == 0) {
+			Application.LoadLevel (2);
 //			print("Round end");
 		}
 		else {
