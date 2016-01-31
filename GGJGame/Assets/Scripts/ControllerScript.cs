@@ -7,6 +7,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 	bool knightIsReady = false;
 	public DialogueScript UI;
 	public KnightBehaviour knight;
+
 	int score = 0;
 	int[] QTE;
 
@@ -33,7 +34,8 @@ public class ControllerScript : Singleton<ControllerScript> {
 	}
 
 	public void OnQTEResult(QTEResult res) {
-//		Debug.Log (res);
+		Debug.Log (res);
+
 		switch(res)
 		{
 			case QTEResult.Failure: {

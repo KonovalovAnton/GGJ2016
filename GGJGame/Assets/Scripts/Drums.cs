@@ -19,9 +19,6 @@ public class Drums : MonoBehaviour {
 	}
 
 	public void PlayDrum(int index) {
-		if (Time.time > lastTimePlayed + delay) {
-			lastTimePlayed = Time.time + delay;
-			cahedAudio.PlayOneShot(clips[index]);
-		}
+		cahedAudio.PlayOneShot(clips[index]);
 	}
 }
