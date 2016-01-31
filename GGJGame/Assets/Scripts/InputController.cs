@@ -12,6 +12,7 @@ public class InputController : Singleton<InputController> {
 	public InputMode mode;
 	public KeyCode[] joystickCodes;
 	public KeyCode[] keyboardCodes;
+	public Animator drummer; 
 
 	public Drums drums;
 
@@ -26,6 +27,8 @@ public class InputController : Singleton<InputController> {
 	protected override void OnAwake () {
 	}
 
+
+	bool left = false;
 	void Update () {
 		for (int i = 0; i < joystickCodes.Length; i++) {
 			/*KeyCode code = KeyCode.A;
@@ -41,6 +44,13 @@ public class InputController : Singleton<InputController> {
 			if (Input.GetKeyDown(joystickCodes[i]) || Input.GetKeyDown(keyboardCodes[i])) {
 				Debug.Log (i + "  - Input Controller");
 					drums.PlayDrum(i);
+				if (left) {
+					drummer.SetTrigger ("LEFT");
+					left ^= true;
+				} else {
+					drummer.SetTrigger ("RIGHT");
+					left^=true;
+				}
 					QTEController.instance.TakeInput(i);
 					
 			}
