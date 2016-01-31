@@ -38,7 +38,7 @@ public class KnightBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print("BLood is playing: " + blood.isPlaying);
+//		print("BLood is playing: " + blood.isPlaying);
 		switch (st) {
 		case State.Spawned:
 			spawn ();
