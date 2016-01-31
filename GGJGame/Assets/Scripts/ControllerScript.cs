@@ -33,7 +33,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 	}
 
 	public void OnQTEResult(QTEResult res) {
-		Debug.Log (res);
+//		Debug.Log (res);
 		switch(res)
 		{
 			case QTEResult.Failure: {

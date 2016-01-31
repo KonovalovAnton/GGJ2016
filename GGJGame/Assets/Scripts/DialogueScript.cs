@@ -7,7 +7,7 @@ using System.Linq;
 public class DialogueScript : MonoBehaviour {
 
 	[SerializeField]SetButtonColor[] buttons;
-	int [] whiteBlocks = new int[] {3, 3, 3};
+	int [] whiteBlocks = new int[] {4, 4, 4};
 	int[] sequence;
 	int i;
 	Score score;
@@ -36,7 +36,7 @@ public class DialogueScript : MonoBehaviour {
 	public void SetButtons() {
 		gameObject.SetActive(true);
 		int j = i + 2;
-		print("i: " + i + " j: " + j);
+//		print("i: " + i + " j: " + j);
 		for (int k = 0; k < buttons.Length; k++) {
 			buttons[k].SetColor(sequence[i+k]);
 		}
