@@ -5,7 +5,10 @@ public class KnightBehaviour : MonoBehaviour {
 
 	public GameObject deadHead;
 	public ParticleSystem blood;
-
+	AudioSource au;
+	public AudioClip swish;
+	public AudioClip ops;
+	public AudioClip aaa;
 
 	public enum State
 	{
@@ -24,6 +27,7 @@ public class KnightBehaviour : MonoBehaviour {
 	public ControllerScript cs;
 
 	void Start () {
+		au = GetComponent<AudioSource> ();
 		anim = GetComponentInChildren<Animator>();
 		king = GameObject.Find ("King").GetComponentInChildren<Animator> ();
 		st = State.Spawned;
@@ -67,8 +71,9 @@ public class KnightBehaviour : MonoBehaviour {
 	}
 
 	//bool came = false;
-	Vector3 delta = new Vector3(0.1f,0,0);
-	Vector3 deltaThrone = new Vector3(0.1f,-0.1f,0);
+	static float boost = 2.5f;
+	Vector3 delta = new Vector3(0.1f,0,0)*boost;
+	Vector3 deltaThrone = new Vector3(0.1f,-0.1f,0)*boost;
 
 	void run() {
 		anim.SetTrigger ("RUN");
@@ -114,6 +119,9 @@ public class KnightBehaviour : MonoBehaviour {
 		king.ResetTrigger ("KNIGHTING");
 		king.SetTrigger ("STAY");
 		if(cutHead) {
+			au.PlayOneShot (swish);
+			au.PlayOneShot (aaa);
+			au.PlayOneShot (ops);
 			blood.gameObject.SetActive(true);
 			Instantiate(deadHead, head.transform.position, Quaternion.identity);
 			xorHead();
