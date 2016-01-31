@@ -23,7 +23,6 @@ public class KnightBehaviour : MonoBehaviour {
 	public Animator anim;
 	public ControllerScript cs;
 
-	// Use this for initialization
 	void Start () {
 		anim = GetComponentInChildren<Animator>();
 		king = GameObject.Find ("King").GetComponentInChildren<Animator> ();

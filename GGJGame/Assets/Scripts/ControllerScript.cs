@@ -20,7 +20,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 
 	public void SetKnightReady() {
 		knightIsReady = true;
-		genQTE (2);
+		genQTE (5);
 		UI.SetSequence (QTE);
 		QTEController.instance.BeginValidation(QTE);
 	}
