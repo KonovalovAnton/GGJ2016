@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\MenuScript.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
+     <Compile Include="Assets\Scripts\CameraResizeScript.cs" />
      <Compile Include="Assets\Scripts\ControllerScript.cs" />
      <Compile Include="Assets\Scripts\DeadHead.cs" />
      <Compile Include="Assets\Scripts\DialogueScript.cs" />
