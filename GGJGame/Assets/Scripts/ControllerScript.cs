@@ -7,6 +7,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 	bool knightIsReady = false;
 	public DialogueScript UI;
 	public KnightBehaviour knight;
+	public AudioController audioController;
 
 	int score = 0;
 	int[] QTE;
@@ -39,6 +40,7 @@ public class ControllerScript : Singleton<ControllerScript> {
 		switch(res)
 		{
 			case QTEResult.Failure: {
+					audioController.OnHeadOff ();
 					UI.SelfDisable();
 					knight.setKneesOff (true);
 					break;
