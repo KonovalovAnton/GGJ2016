@@ -26,7 +26,7 @@ public class KnightBehaviour : MonoBehaviour {
 	public Animator anim;
 	public ControllerScript cs;
 
-	void Start () {
+	void Start () {		
 		au = GetComponent<AudioSource> ();
 		anim = GetComponentInChildren<Animator>();
 		king = GameObject.Find ("King").GetComponentInChildren<Animator> ();
@@ -67,6 +67,7 @@ public class KnightBehaviour : MonoBehaviour {
 
 	void spawn() {
 		transform.position = spawnPoint.transform.position;
+		GetComponent<Generate> ().genRandom ();
         exitPoint.collisionTrigered = false;
 		st = State.Running;
 	}
@@ -122,9 +123,9 @@ public class KnightBehaviour : MonoBehaviour {
 		king.ResetTrigger ("KNIGHTING");
 		king.SetTrigger ("STAY");
 		if(cutHead) {
-			au.PlayOneShot (swish);
-			au.PlayOneShot (aaa);
-			au.PlayOneShot (ops);
+			au.PlayOneShot (swish,0.1f);
+			au.PlayOneShot (aaa,0.1f);
+			au.PlayOneShot (ops,1);
 			blood.gameObject.SetActive(true);
 			Instantiate(deadHead, head.transform.position, Quaternion.identity);
 			xorHead();
