@@ -26,7 +26,7 @@ public class KnightBehaviour : MonoBehaviour {
 	public Animator anim;
 	public ControllerScript cs;
 
-	void Start () {
+	void Start () {		
 		au = GetComponent<AudioSource> ();
 		anim = GetComponentInChildren<Animator>();
 		king = GameObject.Find ("King").GetComponentInChildren<Animator> ();
@@ -67,11 +67,13 @@ public class KnightBehaviour : MonoBehaviour {
 
 	void spawn() {
 		transform.position = spawnPoint.transform.position;
+		GetComponent<Generate> ().genRandom ();
+        exitPoint.collisionTrigered = false;
 		st = State.Running;
 	}
 
 	//bool came = false;
-	static float boost = 2.5f;
+	static float boost = 2f;
 	Vector3 delta = new Vector3(0.1f,0,0)*boost;
 	Vector3 deltaThrone = new Vector3(0.1f,-0.1f,0)*boost;
 
@@ -98,6 +100,7 @@ public class KnightBehaviour : MonoBehaviour {
 		anim.SetTrigger ("RUN");
 		transform.Translate (deltaThrone);
 		if (thronePoint.collisionTrigered) {
+            kneePoint.collisionTrigered = false;
 			st = State.Exit;
 		}
 	}
@@ -105,6 +108,7 @@ public class KnightBehaviour : MonoBehaviour {
 	void exit() {
 		transform.Translate (delta);
 		if (exitPoint.collisionTrigered) {
+            thronePoint.collisionTrigered = false;
 			st = State.Spawned;
 			if(noHead) {
 				//blood.Stop();
@@ -119,9 +123,9 @@ public class KnightBehaviour : MonoBehaviour {
 		king.ResetTrigger ("KNIGHTING");
 		king.SetTrigger ("STAY");
 		if(cutHead) {
-			au.PlayOneShot (swish);
-			au.PlayOneShot (aaa);
-			au.PlayOneShot (ops);
+			au.PlayOneShot (swish,0.1f);
+			au.PlayOneShot (aaa,0.1f);
+			au.PlayOneShot (ops,1);
 			blood.gameObject.SetActive(true);
 			Instantiate(deadHead, head.transform.position, Quaternion.identity);
 			xorHead();
