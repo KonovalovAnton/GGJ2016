@@ -73,7 +73,7 @@ public class KnightBehaviour : MonoBehaviour {
 	}
 
 	//bool came = false;
-	static float boost = 2f;
+	static float boost = 4f;
 	Vector3 delta = new Vector3(0.1f,0,0)*boost;
 	Vector3 deltaThrone = new Vector3(0.1f,-0.1f,0)*boost;
 

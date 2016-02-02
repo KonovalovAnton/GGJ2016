@@ -14,7 +14,7 @@ public class GameTimer : MonoBehaviour {
 	}
 
 	void SetTimer(int time) {
-		timeText.text = time + " left";
+		timeText.text = "Timer:\n" + time;
 	}
 
 	void Update() {
