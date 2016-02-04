@@ -9,7 +9,7 @@ public class GameTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print(Camera.main.aspect);
+//		print(Camera.main.aspect);
 		timeText = GetComponent<Text>();
 	}
 

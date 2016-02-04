@@ -48,6 +48,7 @@
      <Compile Include="Assets\Resources\Generate.cs" />
      <Compile Include="Assets\Resources\MenuScript.cs" />
      <Compile Include="Assets\Resources\Scripts\AudioController.cs" />
+     <Compile Include="Assets\Resources\Scripts\CameraManipulation.cs" />
      <Compile Include="Assets\Resources\Scripts\CameraResizeScript.cs" />
      <Compile Include="Assets\Resources\Scripts\ControllerScript.cs" />
      <Compile Include="Assets\Resources\Scripts\CustomButtonScript.cs" />
@@ -59,10 +60,12 @@
      <Compile Include="Assets\Resources\Scripts\HandleCollision.cs" />
      <Compile Include="Assets\Resources\Scripts\InputController.cs" />
      <Compile Include="Assets\Resources\Scripts\KnightBehaviour.cs" />
+     <Compile Include="Assets\Resources\Scripts\MouseSwipe.cs" />
      <Compile Include="Assets\Resources\Scripts\QTEController.cs" />
      <Compile Include="Assets\Resources\Scripts\Score.cs" />
      <Compile Include="Assets\Resources\Scripts\SetButtonColor.cs" />
      <Compile Include="Assets\Resources\Scripts\Singleton.cs" />
+     <Compile Include="Assets\Resources\Scripts\SwipeManager.cs" />
      <Compile Include="Assets\Resources\Scripts\TestDialogue.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
