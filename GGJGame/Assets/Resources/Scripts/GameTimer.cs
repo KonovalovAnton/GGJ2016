@@ -19,6 +19,7 @@ public class GameTimer : MonoBehaviour {
 
 	void Update() {
 		if ((int)timeLeft == 0) {
+			Resources.UnloadUnusedAssets();
 			Application.LoadLevel (2);
 //			print("Round end");
 		}

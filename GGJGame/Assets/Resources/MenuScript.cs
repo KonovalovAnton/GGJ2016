@@ -14,6 +14,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void StartGame() {
+		Resources.UnloadUnusedAssets();
 		Application.LoadLevel (1);
 	}
 }

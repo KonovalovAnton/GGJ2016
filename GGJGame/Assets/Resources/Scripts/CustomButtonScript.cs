@@ -16,6 +16,7 @@ public class CustomButtonScript : MonoBehaviour {
 
 	void OnMouseDown() {
 		spriteRenderer.sprite = sprites[2];
+		Resources.UnloadUnusedAssets();
 		Application.LoadLevel(1);
 	}
 
